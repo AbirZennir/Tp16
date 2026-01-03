@@ -1,14 +1,13 @@
-export interface Compte {
-  id: string;
-  solde: number;
-  dateCreation: string;
-  type: "COURANT" | "EPARGNE";
-}
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "./apollo/client";
+import App from "./App";
+import "./index.css";
 
-export interface Transaction {
-  id: string;
-  type: "DEPOT" | "RETRAIT";
-  montant: number;
-  date: string;
-  compte: Compte;
-}
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>
+);
